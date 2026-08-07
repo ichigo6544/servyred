@@ -8,11 +8,9 @@ class Trabajo(models.Model):
     ubicacion = models.CharField(max_length=100)
 
     presupuesto = models.DecimalField(
-        max_digits=10,
-        decimal_places=0,
-        null=True,
-        blank=True
-    )
+    max_digits=12,
+    decimal_places=2
+     ) 
 
     horas_estimadas = models.PositiveIntegerField(
         null=True,

@@ -90,6 +90,8 @@ class PerfilForm(forms.ModelForm):
             "foto": forms.ClearableFileInput(
                 attrs={
                     "class": "form-control",
+                    "accept": "image/*",
+                    "capture": "environment",
                 }
             ),
 
@@ -127,18 +129,24 @@ class VerificacionForm(forms.ModelForm):
             "ci_frente": forms.ClearableFileInput(
                 attrs={
                     "class": "form-control",
+                    "accept": "image/*",
+                    "capture": "environment",
                 }
             ),
 
             "ci_dorso": forms.ClearableFileInput(
                 attrs={
                     "class": "form-control",
+                    "accept": "image/*",
+                    "capture": "environment",
                 }
             ),
 
             "selfie_ci": forms.ClearableFileInput(
                 attrs={
                     "class": "form-control",
+                    "accept": "image/*",
+                    "capture": "user",
                 }
             ),
 
