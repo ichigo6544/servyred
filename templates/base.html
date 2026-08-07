@@ -1,0 +1,326 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ServiRed</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="{% url 'inicio' %}">
+
+            <i class="bi bi-briefcase-fill"></i>
+
+            ServiRed
+
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse"
+             id="navbar">
+
+            <ul class="navbar-nav me-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{% url 'inicio' %}">
+
+                        <i class="bi bi-house-fill"></i>
+
+                        Inicio
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{% url 'inicio' %}#contacto">
+
+                        <i class="bi bi-telephone-fill"></i>
+
+                        Contacto
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{% url 'politicas' %}">
+
+                        <i class="bi bi-shield-check"></i>
+
+                        Políticas
+
+                    </a>
+
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{% url 'crear_trabajo' %}">
+
+                        <i class="bi bi-plus-circle-fill"></i>
+
+                        Publicar
+
+                    </a>
+
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+            <ul class="navbar-nav">
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item dropdown">
+
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown">
+
+                        <i class="bi bi-person-circle"></i>
+
+                        {{ user.username }}
+
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                        <li>
+
+                            <a
+                                class="dropdown-item"
+                                href="{% url 'perfil' user.username %}">
+
+                                <i class="bi bi-person"></i>
+
+                                Mi perfil
+
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a
+                                class="dropdown-item"
+                                href="{% url 'crear_trabajo' %}">
+
+                                <i class="bi bi-plus-circle"></i>
+
+                                Publicar trabajo
+
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a
+                                class="dropdown-item"
+                                href="{% url 'politicas' %}">
+
+                                <i class="bi bi-shield-check"></i>
+
+                                Políticas
+
+                            </a>
+
+                        </li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+
+                            <a
+                                class="dropdown-item text-danger"
+                                href="{% url 'logout' %}">
+
+                                <i class="bi bi-box-arrow-right"></i>
+
+                                Cerrar sesión
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'login' %}">
+
+                        Iniciar sesión
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                        class="btn btn-light ms-2"
+                        href="{% url 'registro' %}">
+
+                        Registrarse
+
+                    </a>
+
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="container py-4">
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="alert alert-{{ message.tags }}">
+
+                {{ message }}
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+    {% block contenido %}
+    {% endblock %}
+
+</div>
+
+<footer id="contacto" class="mt-5">
+
+    <div class="container">
+
+        <hr>
+
+        <div class="row text-center">
+
+            <div class="col-md-4">
+
+                <h5>💼 ServiRed</h5>
+
+                <p class="text-muted">
+
+                    Plataforma para conectar personas con trabajadores.
+
+                </p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h5>📞 Contacto</h5>
+
+                <p>
+
+                    👤 Santiago Godoy<br>
+
+                    📧 santiagocolas2008@gmail.com<br>
+
+                    📱 +595 983 713 618
+
+                </p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h5>📄 Información</h5>
+
+                <p>
+
+                    <a href="{% url 'politicas' %}">
+                        Políticas de uso
+                    </a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <p class="text-center text-muted">
+
+            © 2026 ServiRed · Todos los derechos reservados.
+
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+    duration: 800,
+    once: true,
+});
+
+</script>
+
+</body>
+
+</html>

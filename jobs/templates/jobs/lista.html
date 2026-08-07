@@ -1,0 +1,581 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+<div class="container">
+
+    <!-- HERO -->
+
+    <section class="hero" data-aos="fade-up">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+
+                    🛡️ Plataforma segura
+
+                </span>
+
+                <h1 class="display-4 fw-bold mb-3">
+
+                    Encuentra trabajadores de confianza en minutos
+
+                </h1>
+
+                <p class="lead mb-4">
+
+                    ServiRed conecta personas con trabajadores verificados
+                    de forma rápida, sencilla y segura.
+
+                </p>
+
+                <div class="d-flex flex-wrap gap-3">
+
+                    {% if user.is_authenticated %}
+
+                    <a href="{% url 'crear_trabajo' %}"
+                       class="btn btn-warning btn-lg">
+
+                        <i class="bi bi-plus-circle-fill"></i>
+
+                        Publicar trabajo
+
+                    </a>
+
+                    {% else %}
+
+                    <a href="{% url 'registro' %}"
+                       class="btn btn-warning btn-lg">
+
+                        Crear cuenta
+
+                    </a>
+
+                    {% endif %}
+
+                    <a href="#trabajos"
+                       class="btn btn-light btn-lg">
+
+                        <i class="bi bi-search"></i>
+
+                        Explorar trabajos
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 text-center mt-5 mt-lg-0">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=900"
+                    class="img-fluid rounded-4 shadow-lg"
+                    alt="Trabajadores">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ESTADÍSTICAS -->
+
+    <section class="my-5" data-aos="fade-up">
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-people-fill display-4 text-primary"></i>
+
+                        <h2 class="fw-bold mt-3">
+
+                            +500
+
+                        </h2>
+
+                        <p class="text-muted">
+
+                            Usuarios registrados
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-briefcase-fill display-4 text-primary"></i>
+
+                        <h2 class="fw-bold mt-3">
+
+                            +900
+
+                        </h2>
+
+                        <p class="text-muted">
+
+                            Trabajos publicados
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-shield-check display-4 text-primary"></i>
+
+                        <h2 class="fw-bold mt-3">
+
+                            100%
+
+                        </h2>
+
+                        <p class="text-muted">
+
+                            Usuarios verificados
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-star-fill display-4 text-warning"></i>
+
+                        <h2 class="fw-bold mt-3">
+
+                            4.9
+
+                        </h2>
+
+                        <p class="text-muted">
+
+                            Calificación promedio
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BUSCADOR -->
+
+    <section class="mb-5" data-aos="fade-up">
+
+        <form method="GET">
+
+            <div class="input-group input-group-lg shadow-lg">
+
+                <input
+                    type="text"
+                    name="q"
+                    class="form-control"
+                    placeholder="Buscar trabajos, ciudades o categorías..."
+                    value="{{ request.GET.q }}">
+
+                <button class="btn btn-primary">
+
+                    <i class="bi bi-search"></i>
+
+                    Buscar
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+
+    <section class="mb-5" data-aos="fade-up">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+
+                ¿Cómo funciona?
+
+            </h2>
+
+            <p class="text-muted">
+
+                Solo cuatro pasos para encontrar ayuda o conseguir trabajo.
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card h-100 text-center">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-person-plus-fill display-4 text-primary"></i>
+
+                        <h4 class="mt-3">
+
+                            Regístrate
+
+                        </h4>
+
+                        <p>
+
+                            Crea tu cuenta gratuitamente.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card h-100 text-center">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-file-earmark-plus-fill display-4 text-primary"></i>
+
+                        <h4 class="mt-3">
+
+                            Publica
+
+                        </h4>
+
+                        <p>
+
+                            Publica el trabajo que necesitas.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card h-100 text-center">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-chat-dots-fill display-4 text-primary"></i>
+
+                        <h4 class="mt-3">
+
+                            Recibe propuestas
+
+                        </h4>
+
+                        <p>
+
+                            Trabajadores verificados te enviarán ofertas.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card h-100 text-center">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-star-fill display-4 text-warning"></i>
+
+                        <h4 class="mt-3">
+
+                            Califica
+
+                        </h4>
+
+                        <p>
+
+                            Comparte tu experiencia.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TRABAJOS -->
+
+    <section id="trabajos">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h2 class="fw-bold">
+
+                Trabajos disponibles
+
+            </h2>
+
+            <span class="badge bg-primary">
+
+                {{ trabajos|length }} publicados
+
+            </span>
+
+        </div>
+
+        <div class="row">
+
+            {% for trabajo in trabajos %}
+
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-4" data-aos="zoom-in">
+
+                <div class="card h-100">
+
+                    {% if trabajo.imagen %}
+
+                    <img src="{{ trabajo.imagen.url }}"
+                         class="card-img-top">
+
+                    {% else %}
+
+                    <img src="https://placehold.co/600x350?text=Sin+Imagen"
+                         class="card-img-top">
+
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        <h4 class="fw-bold">
+
+                            {{ trabajo.titulo }}
+
+                        </h4>
+
+                        <p class="text-muted">
+
+                            {{ trabajo.descripcion|truncatewords:18 }}
+
+                        </p>
+
+                        <hr>
+
+                        <p><i class="bi bi-geo-alt-fill text-primary"></i> {{ trabajo.ubicacion }}</p>
+
+                        <p><i class="bi bi-cash-stack text-success"></i> Gs. {{ trabajo.presupuesto }}</p>
+
+                        <p><i class="bi bi-person-circle text-primary"></i> {{ trabajo.usuario.username }}</p>
+
+                        {% if trabajo.estado == "DISPONIBLE" %}
+
+                            <span class="badge bg-success">Disponible</span>
+
+                        {% elif trabajo.estado == "ACEPTADO" %}
+
+                            <span class="badge bg-warning text-dark">Aceptado</span>
+
+                        {% else %}
+
+                            <span class="badge bg-secondary">Finalizado</span>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <a href="{% url 'detalle_trabajo' trabajo.id %}"
+                           class="btn btn-primary w-100">
+
+                            Ver trabajo
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="alert alert-info text-center">
+
+                No hay trabajos publicados todavía.
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+        <!-- CONTACTO -->
+
+    <section id="contacto"
+             class="mt-5"
+             data-aos="fade-up">
+
+        <div class="card border-0 shadow-lg">
+
+            <div class="card-body p-5">
+
+                <div class="text-center mb-5">
+
+                    <h2 class="fw-bold">
+
+                        ¿Necesitas ayuda?
+
+                    </h2>
+
+                    <p class="text-muted">
+
+                        Si tienes dudas, sugerencias o encontraste algún problema,
+                        puedes comunicarte directamente conmigo.
+
+                    </p>
+
+                </div>
+
+                <div class="row text-center g-4">
+
+                    <div class="col-md-4">
+
+                        <div class="card h-100">
+
+                            <div class="card-body">
+
+                                <i class="bi bi-person-circle display-3 text-primary"></i>
+
+                                <h4 class="mt-3">
+
+                                    Creador
+
+                                </h4>
+
+                                <p>
+
+                                    Santiago Godoy
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="card h-100">
+
+                            <div class="card-body">
+
+                                <i class="bi bi-telephone-fill display-3 text-success"></i>
+
+                                <h4 class="mt-3">
+
+                                    Teléfono
+
+                                </h4>
+
+                                <p>
+
+                                    +595 983 713 618
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="card h-100">
+
+                            <div class="card-body">
+
+                                <i class="bi bi-envelope-fill display-3 text-warning"></i>
+
+                                <h4 class="mt-3">
+
+                                    Correo
+
+                                </h4>
+
+                                <p>
+
+                                    santiagocolas2008@gmail.com
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

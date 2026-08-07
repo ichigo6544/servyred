@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<div class="row align-items-center">
+
+    <div class="col-lg-6">
+
+        <h1 class="display-4 fw-bold text-primary">
+
+            Bienvenido a ServiRed
+
+        </h1>
+
+        <p class="lead mt-3">
+
+            Encuentra profesionales para cualquier trabajo o publica tus servicios
+            de forma rápida, sencilla y segura.
+
+        </p>
+
+        {% if not user.is_authenticated %}
+
+        <a href="{% url 'registro' %}" class="btn btn-primary btn-lg mt-3">
+
+            Crear cuenta
+
+        </a>
+
+        <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg mt-3">
+
+            Iniciar sesión
+
+        </a>
+
+        {% endif %}
+
+    </div>
+
+    <div class="col-lg-6 text-center">
+
+        <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            class="img-fluid"
+            width="350">
+
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<div class="row text-center">
+
+    <div class="col-md-4">
+
+        <div class="card shadow p-4">
+
+            <h3>
+
+                💼
+
+            </h3>
+
+            <h5>
+
+                Publica trabajos
+
+            </h5>
+
+            <p>
+
+                Encuentra trabajadores rápidamente.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow p-4">
+
+            <h3>
+
+                👨‍🔧
+
+            </h3>
+
+            <h5>
+
+                Profesionales
+
+            </h5>
+
+            <p>
+
+                Personas capacitadas para ayudarte.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow p-4">
+
+            <h3>
+
+                ⭐
+
+            </h3>
+
+            <h5>
+
+                Calidad
+
+            </h5>
+
+            <p>
+
+                Sistema de reputación para mayor confianza.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

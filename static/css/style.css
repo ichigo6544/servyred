@@ -1,0 +1,548 @@
+/* ==========================================
+                SERVIRED 2.0
+========================================== */
+:root{
+
+    --azul:#2563eb;
+    --azul-hover:#1d4ed8;
+    --celeste:#38bdf8;
+
+    --amarillo:#facc15;
+    --amarillo-hover:#eab308;
+
+    --fondo:#fff7c2;
+
+    --blanco:#ffffff;
+    --oscuro:#0f172a;
+    --texto:#334155;
+
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:var(--fondo);
+
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+
+    color:var(--texto);
+
+}
+
+/* ==========================================
+                NAVBAR
+========================================== */
+
+.navbar{
+
+    background:linear-gradient(90deg,var(--azul),var(--celeste))!important;
+
+    padding:18px 0;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.18);
+
+}
+
+.navbar-brand{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:white!important;
+
+}
+
+.nav-link{
+
+    color:white!important;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.nav-link:hover{
+
+    color:var(--amarillo)!important;
+
+}
+
+/* ==========================================
+                HERO
+========================================== */
+
+.hero{
+
+    background:linear-gradient(135deg,var(--azul),var(--celeste));
+
+    color:white;
+
+    border-radius:28px;
+
+    padding:70px 45px;
+
+    margin-bottom:45px;
+
+    box-shadow:0 20px 50px rgba(37,99,235,.20);
+
+}
+
+.hero h1{
+
+    color:white;
+
+    font-size:3rem;
+
+    margin-bottom:15px;
+
+}
+
+.hero p{
+
+    font-size:1.2rem;
+
+    opacity:.95;
+
+}
+
+/* ==========================================
+                TITULOS
+========================================== */
+
+h1,h2,h3,h4,h5{
+
+    color:var(--oscuro);
+
+    font-weight:700;
+
+}
+
+/* ==========================================
+                BOTONES
+========================================== */
+
+.btn{
+
+    border-radius:14px;
+
+    padding:10px 22px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-primary{
+
+    background:var(--azul);
+
+    border:none;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--azul-hover);
+
+}
+
+.btn-success{
+
+    background:var(--amarillo);
+
+    color:#111827;
+
+    border:none;
+
+}
+
+.btn-success:hover{
+
+    background:var(--amarillo-hover);
+
+    color:#111827;
+
+}
+
+.btn-warning{
+
+    background:var(--amarillo);
+
+    border:none;
+
+    color:#111827;
+
+}
+
+.btn-warning:hover{
+
+    background:var(--amarillo-hover);
+
+}
+
+.btn-danger{
+
+    border:none;
+
+}
+
+/* ==========================================
+                BUSCADOR
+========================================== */
+
+.input-group{
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+}
+
+.input-group .form-control{
+
+    border:none;
+
+}
+
+/* ==========================================
+                CARDS
+========================================== */
+
+.card{
+
+    border:none;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    background:white;
+
+    transition:.35s;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(37,99,235,.18);
+
+}
+
+.card-img-top{
+
+    height:230px;
+
+    object-fit:cover;
+
+}
+
+.card-body{
+
+    padding:25px;
+
+}
+
+.card-footer{
+
+    background:white;
+
+    border:none;
+
+    padding:20px;
+
+}
+
+/* ==========================================
+                BADGES
+========================================== */
+
+.badge{
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-size:.9rem;
+
+}
+
+/* ==========================================
+                FORMULARIOS
+========================================== */
+
+.form-control,
+.form-select{
+
+    border-radius:15px;
+
+    padding:13px;
+
+    border:2px solid #e2e8f0;
+
+    transition:.3s;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:var(--celeste);
+
+    box-shadow:0 0 0 .25rem rgba(56,189,248,.20);
+
+}
+
+/* ==========================================
+                PERFIL
+========================================== */
+
+.rounded-circle{
+
+    border:6px solid white;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+/* ==========================================
+                ALERTAS
+========================================== */
+
+.alert{
+
+    border:none;
+
+    border-radius:16px;
+
+}
+
+/* ==========================================
+                TABLAS
+========================================== */
+
+.table{
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+}
+
+/* ==========================================
+                ENLACES
+========================================== */
+
+a{
+
+    text-decoration:none;
+
+}
+
+a:hover{
+
+    text-decoration:none;
+
+}
+
+/* ==========================================
+                FOOTER
+========================================== */
+
+footer{
+
+    background:var(--oscuro);
+
+    color:white;
+
+    margin-top:80px;
+
+    padding:50px 0;
+
+}
+
+footer h5{
+
+    color:white;
+
+}
+
+footer p{
+
+    color:#cbd5e1;
+
+}
+
+footer a{
+
+    color:var(--celeste);
+
+    transition:.3s;
+
+}
+
+footer a:hover{
+
+    color:var(--amarillo);
+
+}
+
+/* ==========================================
+                SOMBRAS
+========================================== */
+
+.shadow-lg{
+
+    box-shadow:0 25px 45px rgba(0,0,0,.15)!important;
+
+}
+
+/* ==========================================
+                TEXTOS
+========================================== */
+
+.text-primary{
+
+    color:var(--azul)!important;
+
+}
+
+/* ==========================================
+                IMAGENES
+========================================== */
+
+img{
+
+    max-width:100%;
+
+}
+
+/* ==========================================
+                SCROLL
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--azul);
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--celeste);
+
+}
+
+/* ==========================================
+                RESPONSIVE
+========================================== */
+
+@media(max-width:992px){
+
+    .hero{
+
+        padding:50px 30px;
+
+        text-align:center;
+
+    }
+
+    .hero h1{
+
+        font-size:2.4rem;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .navbar-brand{
+
+        font-size:24px;
+
+    }
+
+    .hero{
+
+        padding:40px 25px;
+
+    }
+
+    .hero h1{
+
+        font-size:2rem;
+
+    }
+
+    .hero p{
+
+        font-size:1rem;
+
+    }
+
+    .card-img-top{
+
+        height:190px;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+        margin-top:8px;
+
+    }
+
+    .card-body{
+
+        padding:18px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .hero{
+
+        border-radius:20px;
+
+        padding:35px 20px;
+
+    }
+
+    .hero h1{
+
+        font-size:1.8rem;
+
+    }
+
+}

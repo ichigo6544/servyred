@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-7">
+
+        <div class="card shadow-lg border-0">
+
+            <div class="card-body p-5">
+
+                <div class="text-center mb-4">
+
+                    <h1 class="fw-bold text-primary">
+
+                        🪪 Verifica tu identidad
+
+                    </h1>
+
+                    <p class="text-muted">
+
+                        Para proteger a toda la comunidad necesitamos verificar tu identidad.
+
+                    </p>
+
+                </div>
+
+                <div class="alert alert-warning">
+
+                    <h5>📌 Paso 3 de 3</h5>
+
+                    Tu cuenta quedará en revisión hasta que un administrador
+                    apruebe tu documentación.
+
+                </div>
+
+                <div class="card bg-light border-0 mb-4">
+
+                    <div class="card-body">
+
+                        <h5 class="fw-bold">
+
+                            📷 Recomendaciones
+
+                        </h5>
+
+                        <ul class="mb-0">
+
+                            <li>✅ Usa buena iluminación.</li>
+
+                            <li>✅ El CI debe verse completo.</li>
+
+                            <li>✅ Tu rostro debe verse claramente.</li>
+
+                            <li>✅ La selfie debe mostrar tu rostro junto al CI.</li>
+
+                            <li>❌ No uses filtros.</li>
+
+                            <li>❌ No cubras ninguna parte del documento.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <form method="POST"
+                      enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            📄 Frente del CI
+
+                        </label>
+
+                        {{ form.ci_frente }}
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            📄 Dorso del CI
+
+                        </label>
+
+                        {{ form.ci_dorso }}
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            🤳 Selfie sosteniendo el CI
+
+                        </label>
+
+                        {{ form.selfie_ci }}
+
+                    </div>
+
+                    <button
+                        class="btn btn-success btn-lg w-100">
+
+                        Enviar verificación
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2 class="mb-4">
+                ⭐ Calificar trabajador
+            </h2>
+
+            <p>
+
+                Estás calificando a
+
+                <strong>{{ trabajador.username }}</strong>
+
+            </p>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Estrellas
+
+                    </label>
+
+                    {{ form.estrellas }}
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Comentario
+
+                    </label>
+
+                    {{ form.comentario }}
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-success">
+
+                    ⭐ Guardar calificación
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

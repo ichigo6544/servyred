@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-6">
+
+        <div class="card shadow-lg border-0">
+
+            <div class="card-body p-5">
+
+                <div class="text-center mb-4">
+
+                    <h1 class="fw-bold text-primary">
+
+                        👤 Completa tu perfil
+
+                    </h1>
+
+                    <p class="text-muted">
+
+                        Ya creaste tu cuenta.
+                        Ahora completa tu información personal.
+
+                    </p>
+
+                </div>
+
+                <div class="alert alert-info">
+
+                    <strong>Paso 2 de 3</strong>
+
+                    <br>
+
+                    Después podrás verificar tu identidad.
+
+                </div>
+
+                <form method="POST"
+                      enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            Foto de perfil
+
+                        </label>
+
+                        {{ form.foto }}
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            Teléfono
+
+                        </label>
+
+                        {{ form.telefono }}
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            Dirección
+
+                        </label>
+
+                        {{ form.direccion }}
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary btn-lg w-100">
+
+                        Guardar y continuar
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

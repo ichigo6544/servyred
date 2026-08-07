@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<div class="container">
+
+    <div class="card shadow-lg border-0 mb-5">
+
+        {% if trabajo.imagen %}
+
+            <img src="{{ trabajo.imagen.url }}"
+                 class="card-img-top"
+                 style="max-height:450px;object-fit:cover;">
+
+        {% endif %}
+
+        <div class="card-body p-4">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+
+                <h2 class="fw-bold">
+
+                    {{ trabajo.titulo }}
+
+                </h2>
+
+                {% if trabajo.estado == "DISPONIBLE" %}
+
+                    <span class="badge bg-success fs-6">
+                        Disponible
+                    </span>
+
+                {% elif trabajo.estado == "ACEPTADO" %}
+
+                    <span class="badge bg-warning text-dark fs-6">
+                        Aceptado
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-secondary fs-6">
+                        Finalizado
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+            <p class="text-muted">
+
+                {{ trabajo.descripcion }}
+
+            </p>
+
+            <hr>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <p><strong>📍 Ubicación</strong><br>{{ trabajo.ubicacion }}</p>
+
+                    <p><strong>💰 Presupuesto</strong><br>Gs. {{ trabajo.presupuesto }}</p>
+
+                    <p><strong>⏰ Horas estimadas</strong><br>{{ trabajo.horas_estimadas }}</p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <p><strong>📞 Contacto</strong><br>{{ trabajo.telefono_contacto }}</p>
+
+                    <p><strong>👤 Publicado por</strong><br>{{ trabajo.usuario.username }}</p>
+
+                    <p><strong>📅 Fecha</strong><br>{{ trabajo.fecha_publicacion|date:"d/m/Y" }}</p>
+
+                </div>
+
+            </div>
+
+            {% if user == trabajo.usuario %}
+
+                <hr>
+
+                {% if trabajo.estado == "ACEPTADO" %}
+
+                    <a href="{% url 'finalizar_trabajo' trabajo.id %}"
+                       class="btn btn-danger">
+
+                        🏁 Finalizar trabajo
+
+                    </a>
+
+                {% elif trabajo.estado == "FINALIZADO" %}
+
+                    <a href="{% url 'calificar_trabajo' trabajo.id %}"
+                       class="btn btn-warning">
+
+                        ⭐ Calificar trabajador
+
+                    </a>
+
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% if user.is_authenticated and user != trabajo.usuario and trabajo.estado == "DISPONIBLE" %}
+
+    <div class="card shadow border-0 mb-5">
+
+        <div class="card-body">
+
+            <h3 class="mb-4">
+
+                📨 Enviar propuesta
+
+            </h3>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button class="btn btn-primary w-100">
+
+                    Enviar propuesta
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    {% if user == trabajo.usuario %}
+
+    <div class="card shadow border-0">
+
+        <div class="card-body">
+
+            <h3 class="mb-4">
+
+                📋 Propuestas recibidas
+
+            </h3>
+
+            {% for propuesta in propuestas %}
+
+            <div class="card mb-3 border-0 shadow-sm">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between flex-wrap">
+
+                        <h5 class="fw-bold">
+
+                            {{ propuesta.trabajador.username }}
+
+                        </h5>
+
+                        <strong class="text-success">
+
+                            Gs. {{ propuesta.monto }}
+
+                        </strong>
+
+                    </div>
+
+                    <hr>
+
+                    <p>
+
+                        ⏰ {{ propuesta.tiempo }}
+
+                    </p>
+
+                    <p>
+
+                        📞 {{ propuesta.telefono }}
+
+                    </p>
+
+                    <p>
+
+                        {{ propuesta.mensaje }}
+
+                    </p>
+
+                    {% if trabajo.estado == "DISPONIBLE" %}
+
+                        <a href="{% url 'aceptar_propuesta' propuesta.id %}"
+                           class="btn btn-success">
+
+                            ✅ Aceptar propuesta
+
+                        </a>
+
+                    {% elif propuesta.aceptada %}
+
+                        <span class="badge bg-success">
+
+                            Propuesta aceptada
+
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge bg-secondary">
+
+                            No seleccionada
+
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="alert alert-info">
+
+                No hay propuestas todavía.
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
