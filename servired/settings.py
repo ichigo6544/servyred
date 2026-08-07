@@ -13,7 +13,11 @@ SECRET_KEY = "django-insecure--@2$-4syfj7sedmjx%at54rbg&z!hyz59xyc&$w$!4t#haiigj
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "servyred.onrender.com",
+    "127.0.0.1",
+    "localhost",
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -115,3 +119,6 @@ LOGOUT_REDIRECT_URL = "login"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+CSRF_TRUSTED_ORIGINS = [
+    "https://servyred.onrender.com",
+]
