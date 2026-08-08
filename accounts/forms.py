@@ -73,16 +73,9 @@ class RegistroForm(UserCreationForm):
             }
         )
 
-    def clean_username(self):
-        username = self.cleaned_data["username"].strip()
-
-        if Usuario.objects.filter(username__iexact=username).exists():
-            raise ValidationError("Ese nombre de usuario ya está en uso.")
-
-        return username
-
     def clean_email(self):
-        email = self.cleaned_data["email"].strip().lower()
+
+        email = self.cleaned_data.get("email", "").strip().lower()
 
         if Usuario.objects.filter(email__iexact=email).exists():
             raise ValidationError("Ese correo ya está registrado.")
